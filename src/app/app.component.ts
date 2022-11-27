@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'listen-frontend';
+  isLight = true;
+  showPlayer = false;
+
+  onSwitchTheme(): void {
+    this.isLight = !this.isLight;
+  }
+
+  onSwitchShowPlayer(): void {
+    this.showPlayer = !this.showPlayer;
+  }
+
+  getRootClass() : string {
+    if (this.isLight) return "light-theme";
+    return "dark-theme";
+  }
 }
