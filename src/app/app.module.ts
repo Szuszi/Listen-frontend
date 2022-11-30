@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { BottomAudioPlayerComponent } from './bottom-audio-player/bottom-audio-player.component';
+import { BottomAudioPlayerComponent } from './components/bottom-audio-player/bottom-audio-player.component';
 import { NewestPageComponent } from './pages/newest-page/newest-page.component';
 import { TrackUploadPageComponent } from './pages/track-upload-page/track-upload-page.component';
 import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.component';
