@@ -18,12 +18,9 @@
   </mat-toolbar>
 
   <div class="main-content">
-    <button mat-mini-fab (click)="onSwitchShowPlayer()">
-      <mat-icon>play_arrow</mat-icon>
-    </button>
   </div>
 </div>
 
-<div class="audio-player" [ngStyle]="{'height': (showPlayer) ? '70px' : '0px'}">
-
+<div class="audio-player">
+  <app-bottom-audio-player></app-bottom-audio-player>
 </div>
