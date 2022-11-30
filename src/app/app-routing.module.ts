@@ -14,12 +14,12 @@ const routes: Routes = [
   { path: 'favorites', component: FavoritesPageComponent },
   { path: 'user/:id', component: UserPageComponent },
   { path: 'user-track/:id', component: TrackPageComponent },
-  { path: '', redirectTo: '/newest', pathMatch: "full"},
-  { path: '**', component: PageNotFoundComponent }
+  { path: '', redirectTo: '/newest', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

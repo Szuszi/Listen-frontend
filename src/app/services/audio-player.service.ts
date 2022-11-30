@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AudioPlayerService {
-
   audio: HTMLAudioElement = new Audio();
 
   constructor() {
-    this.audio.src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+    this.audio.src =
+      'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
     this.audio.load();
   }
 

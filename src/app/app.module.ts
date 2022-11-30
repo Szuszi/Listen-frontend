@@ -27,7 +27,7 @@ import { TrackPageComponent } from './pages/track-page/track-page.component';
     TrackUploadPageComponent,
     FavoritesPageComponent,
     UserPageComponent,
-    TrackPageComponent
+    TrackPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,9 +36,9 @@ import { TrackPageComponent } from './pages/track-page/track-page.component';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatSliderModule
+    MatSliderModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
