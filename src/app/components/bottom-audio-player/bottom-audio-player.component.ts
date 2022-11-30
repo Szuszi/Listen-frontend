@@ -7,8 +7,6 @@ import { AudioPlayerService } from '../../services/audio-player.service';
   styleUrls: ['./bottom-audio-player.component.css'],
 })
 export class BottomAudioPlayerComponent implements OnInit {
-  volume: number | null = 0.5;
-
   constructor(public audioPlayerService: AudioPlayerService) {}
 
   ngOnInit(): void {}
