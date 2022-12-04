@@ -1,0 +1,23 @@
+<div class="card-body">
+  <img src="{{ track?.pictureUrl }}" />
+
+  <div class="card-main-context">
+    <div class="card-upper-main-context">
+      <button mat-fab color="" aria-label="Play song" (click)="onPlayPressed()">
+        <mat-icon>{{ isPlaying ? 'pause' : 'play_arrow' }}</mat-icon>
+      </button>
+      <div class="card-track-infos">
+        <div class="card-names">
+          <p style="color: rgb(0, 0, 0, 0.5)">{{ user?.name }}</p>
+          <p>{{ track?.name }}</p>
+        </div>
+        <div class="card-names">
+          <p style="color: rgb(0, 0, 0, 0.5)">
+            {{ createdDate?.toLocaleDateString() }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="wave-form"></div>
+  </div>
+</div>
