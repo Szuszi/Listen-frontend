@@ -14,8 +14,6 @@ export class TrackCardComponent implements OnInit {
   user: User | undefined;
   createdDate: Date | undefined;
 
-  isPlaying: boolean = false;
-
   constructor(public audioPlayerService: AudioPlayerService) {}
 
   ngOnInit(): void {}
@@ -32,15 +30,12 @@ export class TrackCardComponent implements OnInit {
       if (this.audioPlayerService.audio.src === this.track.audioUrl) {
         if (this.audioPlayerService.audio.paused) {
           this.audioPlayerService.playAudio();
-          this.isPlaying = true;
         } else {
           this.audioPlayerService.pauseAudio();
-          this.isPlaying = false;
         }
       } else {
         this.audioPlayerService.changeAudio(this.track.audioUrl);
         this.audioPlayerService.playAudio();
-        this.isPlaying = true;
       }
     }
   }

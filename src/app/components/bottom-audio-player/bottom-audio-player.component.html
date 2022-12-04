@@ -15,6 +15,15 @@
     }}</mat-icon>
   </button>
 
+  <mat-slider
+    max="audioPlayerService.audio.duration"
+    step="0.01"
+    (input)="onSeekAudio($event)"
+    [value]="audioPlayerService.audio.currentTime"
+    style="width: 60%"
+  >
+  </mat-slider>
+
   <div
     style="
       display: flex;

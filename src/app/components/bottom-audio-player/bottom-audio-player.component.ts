@@ -32,4 +32,10 @@ export class BottomAudioPlayerComponent implements OnInit {
       this.audioPlayerService.audio.volume = event.value;
     }
   }
+
+  onSeekAudio(event: any): void {
+    if (event.value || event.value === 0) {
+      this.audioPlayerService.audio.currentTime = event.value;
+    }
+  }
 }
