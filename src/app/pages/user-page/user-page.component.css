@@ -1,0 +1,18 @@
+.user-header-container {
+  display: flex;
+  justify-content: start;
+  margin: 20px 0 20px 0;
+  padding: 12px;
+  height: 120px;
+  width: 100%;
+}
+
+.avatar {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 120px;
+  width: 120px;
+}
+
+.user-info {
+  padding-left: 20px;
+}
