@@ -8,8 +8,18 @@
       </button>
       <div class="card-track-infos">
         <div class="card-names">
-          <p style="color: rgb(0, 0, 0, 0.5)">{{ user?.name }}</p>
-          <p>{{ track?.name }}</p>
+          <p
+            style="color: rgb(0, 0, 0, 0.5); cursor: pointer"
+            routerLink="{{ '/user/' + user?.id }}"
+          >
+            {{ user?.name }}
+          </p>
+          <p
+            style="cursor: pointer"
+            routerLink="{{ '/user-track/' + user?.id }}"
+          >
+            {{ track?.name }}
+          </p>
         </div>
         <div class="card-names">
           <p style="color: rgb(0, 0, 0, 0.5)">
