@@ -1,0 +1,15 @@
+<div
+  *ngIf="track"
+  class="track-header-container"
+  [style.backgroundColor]="pictureDominantColor"
+>
+  <img class="avatar" src="{{ track.pictureUrl }}" />
+
+  <div class="track-right-side-container">
+    <h1 [style.color]="textColor">{{ track.name }}</h1>
+
+    <button mat-fab color="" aria-label="Play song" (click)="onPlayPressed()">
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+  </div>
+</div>

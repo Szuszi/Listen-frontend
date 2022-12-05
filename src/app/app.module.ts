@@ -15,6 +15,7 @@ import { FavoritesPageComponent } from './pages/favorites-page/favorites-page.co
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { TrackPageComponent } from './pages/track-page/track-page.component';
 import { TrackCardComponent } from './components/track-card/track-card.component';
+import { TrackHeaderComponent } from './components/track-header/track-header.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TrackCardComponent } from './components/track-card/track-card.component
     UserPageComponent,
     TrackPageComponent,
     TrackCardComponent,
+    TrackHeaderComponent,
   ],
   imports: [
     BrowserModule,
