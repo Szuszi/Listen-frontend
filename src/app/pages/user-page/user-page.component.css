@@ -16,3 +16,8 @@
 .user-info {
   padding-left: 20px;
 }
+
+.audio-player-empty-space {
+  min-height: 60px;
+  width: 100%;
+}

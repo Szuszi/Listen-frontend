@@ -3,10 +3,19 @@
   class="track-header-container"
   [style.backgroundColor]="pictureDominantColor"
 >
-  <img class="avatar" src="{{ track.pictureUrl }}" />
+  <img src="{{ track.pictureUrl }}" />
 
   <div class="track-right-side-container">
-    <h1 [style.color]="textColor">{{ track.name }}</h1>
+    <div class="track-text">
+      <h1 [style.color]="textColor">{{ track.name }}</h1>
+      <p
+        [style.color]="textColor"
+        style="padding-left: 20px; cursor: pointer"
+        routerLink="{{ '/user/' + track.ownerUser.id }}"
+      >
+        {{ track.ownerUser.name }}
+      </p>
+    </div>
 
     <button mat-fab color="" aria-label="Play song" (click)="onPlayPressed()">
       <mat-icon>play_arrow</mat-icon>

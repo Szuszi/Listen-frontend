@@ -13,3 +13,8 @@ img {
   justify-content: flex-start;
   margin-left: 20px;
 }
+
+.track-text {
+  display: flex;
+  align-items: center;
+}
