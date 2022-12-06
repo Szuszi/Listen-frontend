@@ -31,7 +31,7 @@ export const mockUsers: User[] = [
 export const mockUserTracks: UserTrack[] = [
   {
     id: 11,
-    userId: 12,
+    ownerUser: mockUsers[0],
     name: 'My uploaded song 🎷',
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     pictureUrl: 'https://picsum.photos/200?random=1',
@@ -40,7 +40,7 @@ export const mockUserTracks: UserTrack[] = [
   },
   {
     id: 12,
-    userId: 14,
+    ownerUser: mockUsers[1],
     name: 'Eine kleine Nachtmusik',
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3',
     pictureUrl: 'https://picsum.photos/200?random=2',
@@ -49,7 +49,7 @@ export const mockUserTracks: UserTrack[] = [
   },
   {
     id: 13,
-    userId: 1,
+    ownerUser: mockUsers[2],
     name: 'POWER',
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3',
     pictureUrl: 'https://picsum.photos/200?random=3',
@@ -58,7 +58,7 @@ export const mockUserTracks: UserTrack[] = [
   },
   {
     id: 14,
-    userId: 12,
+    ownerUser: mockUsers[0],
     name: 'My uploaded song #2',
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     pictureUrl: 'https://picsum.photos/200?random=4',
@@ -67,7 +67,7 @@ export const mockUserTracks: UserTrack[] = [
   },
   {
     id: 15,
-    userId: 14,
+    ownerUser: mockUsers[1],
     name: 'Sonata No. 14 "Moonlight"',
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3',
     pictureUrl: 'https://picsum.photos/200?random=5',
@@ -76,7 +76,7 @@ export const mockUserTracks: UserTrack[] = [
   },
   {
     id: 16,
-    userId: 1,
+    ownerUser: mockUsers[2],
     name: 'POWER #2',
     audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3',
     pictureUrl: 'https://picsum.photos/200?random=6',

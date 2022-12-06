@@ -20,7 +20,7 @@ export class TrackCardComponent implements OnInit {
 
   ngOnChanges(): void {
     if (this.track) {
-      this.user = mockUsers.find(user => user.id === this.track?.userId);
+      this.user = this.track.ownerUser;
       this.createdDate = new Date(this.track?.createdAt);
     }
   }

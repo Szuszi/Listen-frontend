@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { mockUsers, mockUserTracks } from 'src/app/model/mock-data';
 import { UserTrack } from 'src/app/model/user-track.model';
 import { User } from 'src/app/model/user.model';
+import { UserTrackService } from 'src/app/services/user-track.service';
 
 @Component({
   selector: 'app-track-page',
@@ -13,25 +13,21 @@ export class TrackPageComponent implements OnInit {
   track: UserTrack | undefined;
   user: User | undefined;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private userTrackService: UserTrackService
+  ) {}
 
   ngOnInit(): void {
-    this.loadTrackData();
+    this.loadUserTrack();
   }
 
-  private loadTrackData() {
-    const id = this.route.snapshot.paramMap.get('id');
+  private loadUserTrack() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    if (id) {
-      const idNumber = Number(id);
-
-      const foundTrack = mockUserTracks.find(track => track.id === idNumber);
-      const foundUser = mockUsers.find(user => user.id === foundTrack?.userId);
-
-      console.log(foundUser);
-
-      if (foundTrack) this.track = foundTrack;
-      if (foundUser) this.user = foundUser;
-    }
+    this.userTrackService.getUserTrackById(id.toString()).subscribe(track => {
+      this.track = track;
+      this.user = track.ownerUser;
+    });
   }
 }

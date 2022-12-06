@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { mockUserTracks } from 'src/app/model/mock-data';
 import { UserTrack } from 'src/app/model/user-track.model';
+import { UserTrackService } from 'src/app/services/user-track.service';
 
 @Component({
   selector: 'app-newest-page',
@@ -8,9 +8,17 @@ import { UserTrack } from 'src/app/model/user-track.model';
   styleUrls: ['./newest-page.component.css'],
 })
 export class NewestPageComponent implements OnInit {
-  tracks: UserTrack[] = mockUserTracks;
+  tracks: UserTrack[] | undefined;
 
-  constructor() {}
+  constructor(private userTrackService: UserTrackService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadTracks();
+  }
+
+  private loadTracks() {
+    this.userTrackService.getNewestUserTracks().subscribe(tracks => {
+      this.tracks = tracks;
+    });
+  }
 }

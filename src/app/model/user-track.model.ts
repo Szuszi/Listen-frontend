@@ -1,7 +1,9 @@
+import { User } from './user.model';
+
 export class UserTrack {
   constructor(
     public id: number,
-    public userId: number,
+    public ownerUser: User,
     public name: string,
     public audioUrl: string,
     public pictureUrl: string,
