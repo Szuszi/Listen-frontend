@@ -14,6 +14,9 @@ export class UserPageComponent implements OnInit {
   user: User | undefined;
   tracks: UserTrack[] | undefined;
 
+  followers: User[] | undefined;
+  following: User[] | undefined;
+
   constructor(
     private route: ActivatedRoute,
     private userService: UserService
@@ -29,6 +32,8 @@ export class UserPageComponent implements OnInit {
     this.userService.getUserById(id.toString()).subscribe(user => {
       this.user = user;
       this.loadUserTracks();
+      this.loadFollowers();
+      this.loadFollowings();
     });
   }
 
@@ -40,6 +45,24 @@ export class UserPageComponent implements OnInit {
         .subscribe(tracks => {
           this.tracks = tracks;
         });
+    }
+  }
+
+  private loadFollowers() {
+    this.followers = undefined;
+    if (this.user) {
+      this.userService
+        .getUserFollowers(this.user.id.toString())
+        .subscribe(followers => (this.followers = followers));
+    }
+  }
+
+  private loadFollowings() {
+    this.followers = undefined;
+    if (this.user) {
+      this.userService
+        .getUserFollowing(this.user.id.toString())
+        .subscribe(followedUsers => (this.following = followedUsers));
     }
   }
 }

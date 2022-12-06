@@ -16,6 +16,13 @@
         <div class="user-info">
           <h1>{{ user.name }}</h1>
           <p>{{ user.description }}</p>
+
+          <div class="follower-sections">
+            <p *ngIf="followers" style="padding-right: 20px">
+              Followers: {{ followers.length }}
+            </p>
+            <p *ngIf="following">Following: {{ following.length }}</p>
+          </div>
         </div>
       </div>
 

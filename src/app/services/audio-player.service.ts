@@ -22,6 +22,7 @@ export class AudioPlayerService {
 
   changeAudio(url: string) {
     this.audio.src = url;
+    this.audio.currentTime = 0;
     this.audio.load();
   }
 }
