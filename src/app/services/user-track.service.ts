@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { NewUserTrack } from '../model/new-user-track.model';
 import { UserTrack } from '../model/user-track.model';
-import { User } from '../model/user.model';
 
 @Injectable()
 export class UserTrackService {
@@ -16,5 +16,9 @@ export class UserTrackService {
 
   getUserTrackById(id: string): Observable<UserTrack> {
     return this.http.get<UserTrack>(this.tracksUrl + '/' + id);
+  }
+
+  addNewUserTrack(newTrack: NewUserTrack): Observable<UserTrack> {
+    return this.http.post<UserTrack>(this.tracksUrl, newTrack);
   }
 }

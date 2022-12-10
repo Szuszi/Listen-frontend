@@ -1,72 +1,81 @@
 <mat-grid-list cols="3" rowHeight="100%">
   <mat-grid-tile [colspan]="2" [rowspan]="1">
-    <form (ngSubmit)="onSubmit()" #trackForm="ngForm" *ngIf="track">
-      <div style="display: flex; flex-direction: column">
-        <mat-form-field appearance="fill">
-          <mat-label>Track's name</mat-label>
-          <input
-            matInput
-            type="text"
-            class="form-control"
-            id="name"
-            required
-            [(ngModel)]="track.name"
-            name="name"
-            #name="ngModel"
-          />
-        </mat-form-field>
-        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-          Track's name is required
-        </div>
-        <mat-form-field appearance="fill">
-          <mat-label>Track's pictureUrl</mat-label>
-          <input
-            matInput
-            type="text"
-            class="form-control"
-            id="pictureUrl"
-            required
-            [(ngModel)]="track.pictureUrl"
-            name="pictureUrl"
-            #pictureUrl="ngModel"
-          />
-        </mat-form-field>
-        <div
-          [hidden]="pictureUrl.valid || pictureUrl.pristine"
-          class="alert alert-danger"
-        >
-          Track's pictureUrl is required
-        </div>
-        <mat-form-field appearance="fill">
-          <mat-label>Audio's Url</mat-label>
-          <input
-            matInput
-            type="text"
-            class="form-control"
-            id="audioUrl"
-            required
-            [(ngModel)]="track.audioUrl"
-            name="audioUrl"
-            #audioUrl="ngModel"
-          />
-        </mat-form-field>
-        <div
-          [hidden]="audioUrl.valid || audioUrl.pristine"
-          class="alert alert-danger"
-        >
-          Track's pictureUrl is required
-        </div>
+    <div class="flex-column">
+      <form (ngSubmit)="onSubmit()" #trackForm="ngForm" *ngIf="!uploading">
+        <div class="flex-column">
+          <mat-form-field appearance="fill">
+            <mat-label>Track's name</mat-label>
+            <input
+              matInput
+              type="text"
+              class="form-control"
+              id="name"
+              required
+              [(ngModel)]="track.name"
+              name="name"
+              #name="ngModel"
+            />
+          </mat-form-field>
+          <div
+            [hidden]="name.valid || name.pristine"
+            class="alert alert-danger"
+          >
+            Track's name is required
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Track's pictureUrl</mat-label>
+            <input
+              matInput
+              type="text"
+              class="form-control"
+              id="pictureUrl"
+              required
+              [(ngModel)]="track.pictureUrl"
+              name="pictureUrl"
+              #pictureUrl="ngModel"
+            />
+          </mat-form-field>
+          <div
+            [hidden]="pictureUrl.valid || pictureUrl.pristine"
+            class="alert alert-danger"
+          >
+            Track's pictureUrl is required
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Audio's Url</mat-label>
+            <input
+              matInput
+              type="text"
+              class="form-control"
+              id="audioUrl"
+              required
+              [(ngModel)]="track.audioUrl"
+              name="audioUrl"
+              #audioUrl="ngModel"
+            />
+          </mat-form-field>
+          <div
+            [hidden]="audioUrl.valid || audioUrl.pristine"
+            class="alert alert-danger"
+          >
+            Track's pictureUrl is required
+          </div>
 
-        <button
-          mat-raised-button
-          type="submit"
-          class="btn btn-success"
-          [disabled]="!trackForm.form.valid"
-        >
-          Submit
-        </button>
+          <button
+            mat-raised-button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!trackForm.form.valid || uploading"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+
+      <div *ngIf="uploaded" class="success-text">
+        <p style="margin: 8px">Track is successfully uploaded ✅</p>
       </div>
-    </form>
+    </div>
   </mat-grid-tile>
 
   <mat-grid-tile [colspan]="1" [rowspan]="1">

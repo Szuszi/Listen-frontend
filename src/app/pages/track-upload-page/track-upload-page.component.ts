@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { mockUsers } from 'src/app/model/mock-data';
-import { UserTrack } from 'src/app/model/user-track.model';
-import { User } from 'src/app/model/user.model';
+import { NewUserTrack } from 'src/app/model/new-user-track.model';
+import { UserTrackService } from 'src/app/services/user-track.service';
 
 @Component({
   selector: 'app-track-upload-page',
@@ -9,15 +8,26 @@ import { User } from 'src/app/model/user.model';
   styleUrls: ['./track-upload-page.component.css'],
 })
 export class TrackUploadPageComponent implements OnInit {
-  track: UserTrack;
+  track: NewUserTrack = new NewUserTrack('', '', '');
+  uploading: boolean = false;
+  uploaded: boolean = false;
 
-  constructor() {
-    this.track = new UserTrack(0, mockUsers[0], '', '', '', '', '');
-  }
+  constructor(private userTrackService: UserTrackService) {}
 
   ngOnInit(): void {}
 
   onSubmit(): void {
-    console.log(this.track);
+    if (this.track) {
+      this.uploading = true;
+      this.uploaded = false;
+
+      this.userTrackService
+        .addNewUserTrack(this.track)
+        .subscribe(uploadedTrack => {
+          this.track = new NewUserTrack('', '', '');
+          this.uploading = false;
+          this.uploaded = true;
+        });
+    }
   }
 }

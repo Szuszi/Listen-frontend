@@ -1,0 +1,11 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.success-text {
+  background-color: rgb(197 227 188);
+  border: 1px solid rgb(0, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-top: 32px;
+}
