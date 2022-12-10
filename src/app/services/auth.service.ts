@@ -23,7 +23,6 @@ export class AuthenticationService {
     this.fetchCurrentUser().subscribe(authUser => {
       this.userService.getUserByName(authUser.name).subscribe(user => {
         this.authenticatedUser = user;
-        console.log(this.authenticatedUser);
       });
     });
   }

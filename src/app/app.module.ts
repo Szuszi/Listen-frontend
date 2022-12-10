@@ -19,6 +19,7 @@ import { TrackCardComponent } from './components/track-card/track-card.component
 import { TrackHeaderComponent } from './components/track-header/track-header.component';
 import { UserService } from './services/user.service';
 import { UserTrackService } from './services/user-track.service';
+import { TrackEditPageComponent } from './pages/track-edit-page/track-edit-page.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserTrackService } from './services/user-track.service';
     BottomAudioPlayerComponent,
     NewestPageComponent,
     TrackUploadPageComponent,
+    TrackEditPageComponent,
     FavoritesPageComponent,
     UserPageComponent,
     TrackPageComponent,

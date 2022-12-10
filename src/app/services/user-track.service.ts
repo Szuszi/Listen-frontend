@@ -21,4 +21,12 @@ export class UserTrackService {
   addNewUserTrack(newTrack: NewUserTrack): Observable<UserTrack> {
     return this.http.post<UserTrack>(this.tracksUrl, newTrack);
   }
+
+  editUserTrack(id: string, editedTrack: NewUserTrack): Observable<UserTrack> {
+    return this.http.put<UserTrack>(this.tracksUrl + '/' + id, editedTrack);
+  }
+
+  deleteUserTrack(id: string) {
+    return this.http.delete(this.tracksUrl + '/' + id);
+  }
 }
