@@ -9,9 +9,9 @@
       <a mat-button routerLink="/favorites"> Favorites </a>
       <a mat-button routerLink="/upload"> Upload </a>
     </div>
-    <button mat-mini-fab>
+    <a mat-mini-fab routerLink="{{ '/user/' + getCurrentUser()?.id }}">
       <mat-icon>account_circle</mat-icon>
-    </button>
+    </a>
   </mat-toolbar>
 
   <div class="main-content">
