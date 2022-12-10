@@ -6,7 +6,7 @@ import { UserService } from './user.service';
 
 interface AuthUser {
   name: string;
-  authoritize: {
+  authorities: {
     authority: string;
   }[];
 }
@@ -16,11 +16,17 @@ interface AuthUser {
 })
 export class AuthenticationService {
   authenticatedUser: User | undefined;
+  isAdmin: boolean | undefined;
 
   private authUrl = 'api/auth';
 
   constructor(private http: HttpClient, private userService: UserService) {
     this.fetchCurrentUser().subscribe(authUser => {
+      this.isAdmin =
+        authUser.authorities.findIndex(
+          obj => obj.authority === 'ROLE_ADMIN'
+        ) !== -1;
+
       this.userService.getUserByName(authUser.name).subscribe(user => {
         this.authenticatedUser = user;
       });

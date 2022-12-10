@@ -1,5 +1,5 @@
-<div class="card-body">
-  <img src="{{ track?.pictureUrl }}" />
+<div class="card-body" *ngIf="track">
+  <img src="{{ track.pictureUrl }}" />
 
   <div class="card-main-context">
     <div class="card-upper-main-context">
@@ -10,26 +10,32 @@
         <div class="card-names">
           <p
             style="color: rgb(0, 0, 0, 0.5); cursor: pointer"
-            routerLink="{{ '/user/' + user?.id }}"
+            routerLink="{{ '/user/' + trackOwnerUser?.id }}"
           >
-            {{ user?.name }}
+            {{ trackOwnerUser?.name }}
           </p>
           <p
             style="cursor: pointer"
-            routerLink="{{ '/user-track/details/' + track?.id }}"
+            routerLink="{{ '/user-track/details/' + track.id }}"
           >
-            {{ track?.name }}
+            {{ track.name }}
           </p>
         </div>
-        <div class="card-names">
+        <div class="card-names-end">
           <p style="color: rgb(0, 0, 0, 0.5)">
             {{ createdDate?.toLocaleDateString() }}
           </p>
           <a
+            *ngIf="
+              authService.isAdmin ||
+              authService.authenticatedUser?.id === trackOwnerUser?.id
+            "
+            class="edit-button"
             mat-stroked-button
-            routerLink="{{ '/user-track/edit/' + track?.id }}"
-            >Edit</a
+            routerLink="{{ '/user-track/edit/' + track.id }}"
           >
+            <mat-icon>edit</mat-icon>Edit
+          </a>
         </div>
       </div>
     </div>

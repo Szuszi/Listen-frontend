@@ -32,11 +32,36 @@
   margin-left: 12px;
 }
 
+.card-names-end {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .card-track-infos {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.edit-button {
+  height: 24px;
+  min-width: 60px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+.edit-button .mat-icon {
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  padding-right: 6px;
 }
 
 img {

@@ -1,10 +1,14 @@
 <mat-grid-list cols="3" rowHeight="100%">
   <mat-grid-tile [colspan]="2" [rowspan]="1">
     <div class="flex-column">
+      <div *ngIf="!isUserAuthorized()" class="warning-text">
+        <p style="margin: 8px">You are not allowed to edit this track ⛔</p>
+      </div>
+
       <form
         (ngSubmit)="onSubmit()"
         #trackForm="ngForm"
-        *ngIf="!uploading && track && !deleted"
+        *ngIf="!uploading && track && !deleted && isUserAuthorized()"
       >
         <div class="flex-column">
           <mat-form-field appearance="fill">

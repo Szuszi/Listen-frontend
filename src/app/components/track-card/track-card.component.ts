@@ -3,6 +3,7 @@ import { mockUsers } from 'src/app/model/mock-data';
 import { UserTrack } from 'src/app/model/user-track.model';
 import { User } from 'src/app/model/user.model';
 import { AudioPlayerService } from 'src/app/services/audio-player.service';
+import { AuthenticationService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-track-card',
@@ -11,16 +12,19 @@ import { AudioPlayerService } from 'src/app/services/audio-player.service';
 })
 export class TrackCardComponent implements OnInit {
   @Input() track: UserTrack | undefined;
-  user: User | undefined;
+  trackOwnerUser: User | undefined;
   createdDate: Date | undefined;
 
-  constructor(public audioPlayerService: AudioPlayerService) {}
+  constructor(
+    public audioPlayerService: AudioPlayerService,
+    public authService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {}
 
   ngOnChanges(): void {
     if (this.track) {
-      this.user = this.track.ownerUser;
+      this.trackOwnerUser = this.track.ownerUser;
       this.createdDate = new Date(this.track?.createdAt);
     }
   }

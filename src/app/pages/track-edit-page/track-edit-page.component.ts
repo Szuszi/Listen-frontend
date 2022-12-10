@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NewUserTrack } from 'src/app/model/new-user-track.model';
+import { User } from 'src/app/model/user.model';
+import { AuthenticationService } from 'src/app/services/auth.service';
 import { UserTrackService } from 'src/app/services/user-track.service';
 
 @Component({
@@ -11,13 +13,16 @@ import { UserTrackService } from 'src/app/services/user-track.service';
 export class TrackEditPageComponent implements OnInit {
   id: number | undefined;
   track: NewUserTrack | undefined;
+  ownerUser: User | undefined;
+
   uploading: boolean = false;
   uploaded: boolean = false;
   deleted: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
-    private userTrackService: UserTrackService
+    private userTrackService: UserTrackService,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -27,19 +32,20 @@ export class TrackEditPageComponent implements OnInit {
   private loadUserTrack() {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
 
-    console.log(this.id);
-
     this.userTrackService
       .getUserTrackById(this.id.toString())
       .subscribe(track => {
+        this.ownerUser = track.ownerUser;
         this.track = track;
-        console.log(this.track);
       });
   }
 
-  onPressUpdate(): void {}
-
-  onPressDelete(): void {}
+  isUserAuthorized(): boolean {
+    return (
+      this.authService.isAdmin ||
+      this.authService.authenticatedUser?.id === this.ownerUser?.id
+    );
+  }
 
   onDelete(): void {
     if (this.track && this.id) {
