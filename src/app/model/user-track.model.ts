@@ -7,6 +7,7 @@ export class UserTrack {
     public name: string,
     public audioUrl: string,
     public pictureUrl: string,
+    public userFavorites: User[],
     public createdAt: string,
     public updatedAt: string
   ) {}

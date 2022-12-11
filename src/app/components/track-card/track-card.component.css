@@ -47,6 +47,10 @@
   justify-content: space-between;
 }
 
+.action-buttons {
+  display: flex;
+}
+
 .edit-button {
   height: 24px;
   min-width: 60px;
@@ -55,9 +59,27 @@
   justify-content: center;
   align-items: center;
   padding: 0px;
+  margin-left: 8px;
 }
 
 .edit-button .mat-icon {
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  padding-right: 6px;
+}
+
+.favorite-button {
+  height: 24px;
+  min-width: 80px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+}
+
+.favorite-button .mat-icon {
   font-size: 12px;
   width: 16px;
   height: 16px;

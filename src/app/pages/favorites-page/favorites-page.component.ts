@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserTrack } from 'src/app/model/user-track.model';
-import { UserTrackService } from 'src/app/services/user-track.service';
+import { AuthenticationService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-favorites-page',
@@ -10,15 +11,24 @@ import { UserTrackService } from 'src/app/services/user-track.service';
 export class FavoritesPageComponent implements OnInit {
   tracks: UserTrack[] | undefined;
 
-  constructor(private userTrackService: UserTrackService) {}
+  constructor(
+    private userService: UserService,
+    private authService: AuthenticationService
+  ) {}
 
   ngOnInit(): void {
     this.loadTracks();
   }
 
   private loadTracks() {
-    this.userTrackService.getNewestUserTracks().subscribe(tracks => {
-      this.tracks = tracks.filter(track => track.ownerUser.name !== 'Joe_11');
-    });
+    if (this.authService.authenticatedUser) {
+      this.userService
+        .getFavoritedUserTracks(
+          this.authService.authenticatedUser.id.toString()
+        )
+        .subscribe(tracks => {
+          this.tracks = tracks;
+        });
+    }
   }
 }

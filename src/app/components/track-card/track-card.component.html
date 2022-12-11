@@ -25,17 +25,32 @@
           <p style="color: rgb(0, 0, 0, 0.5)">
             {{ createdDate?.toLocaleDateString() }}
           </p>
-          <a
-            *ngIf="
-              authService.isAdmin ||
-              authService.authenticatedUser?.id === trackOwnerUser?.id
-            "
-            class="edit-button"
-            mat-stroked-button
-            routerLink="{{ '/user-track/edit/' + track.id }}"
-          >
-            <mat-icon>edit</mat-icon>Edit
-          </a>
+
+          <div class="action-buttons">
+            <a
+              *ngIf="isFavorited !== undefined"
+              class="favorite-button"
+              mat-stroked-button
+              (click)="onFavoritePressed()"
+            >
+              <mat-icon>{{
+                isFavorited ? 'favorite' : 'favorite_border'
+              }}</mat-icon
+              >Favorite
+            </a>
+
+            <a
+              *ngIf="
+                authService.isAdmin ||
+                authService.authenticatedUser?.id === trackOwnerUser?.id
+              "
+              class="edit-button"
+              mat-stroked-button
+              routerLink="{{ '/user-track/edit/' + track.id }}"
+            >
+              <mat-icon>edit</mat-icon>Edit
+            </a>
+          </div>
         </div>
       </div>
     </div>

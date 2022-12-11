@@ -20,6 +20,7 @@ import { TrackHeaderComponent } from './components/track-header/track-header.com
 import { UserService } from './services/user.service';
 import { UserTrackService } from './services/user-track.service';
 import { TrackEditPageComponent } from './pages/track-edit-page/track-edit-page.component';
+import { FavoriteService } from './services/favorite.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { TrackEditPageComponent } from './pages/track-edit-page/track-edit-page.
     FormsModule,
     HttpClientModule,
   ],
-  providers: [UserService, UserTrackService],
+  providers: [UserService, UserTrackService, FavoriteService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -26,6 +26,10 @@ export class UserService {
     return this.http.get<UserTrack[]>(this.userUrl + '/' + id + '/tracks');
   }
 
+  getFavoritedUserTracks(id: string): Observable<UserTrack[]> {
+    return this.http.get<UserTrack[]>(this.userUrl + '/' + id + '/favorites');
+  }
+
   getUserFollowers(id: string): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl + '/' + id + '/followers');
   }
